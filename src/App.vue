@@ -9,26 +9,27 @@
     {id:'3', label:'1 Nutella'},
   ]);
   const newItem = ref('');
-  const newItemPriority = ref('low');
+  const newItemHighPriority = ref(false);
 </script>
 
 <template>
-  <h1>
-    <i class="material-icons shopping-cart-icon">local_mall</i>
-    {{ header }}
-  </h1>
-  <input v-model="newItem" type="text" 
-  placeholder="Agregar Articulo">
-  <!-- Radio Buttos -->
-  <label>
-    <input type="radio" value="low" v-model="newItemPriority">
-    Baja
-  </label>
-  <label>
-    <input type="radio" value="high" v-model="newItemPriority">
-    Alta
-  </label>
-  {{ newItemPriority == 'low' ? '🧊' : '🔥' }}
+  <h1> <i class="material-icons shopping-cart-icon">local_mall</i> {{ header }}</h1>
+  <!-- Agrupando Entradas de usuario -->
+  <form class="add-item form" v-on:submit.prevent="items.push({id: items.length + 1, label: newItem})">
+    <!-- Entrada de texto -->
+    <input 
+      type="text" 
+      placeholder="Add Item" 
+      v-model.trim="newItem">
+    <!-- Radio Buttons -->
+    <label><input type="checkbox" v-model="newItemHighPriority">Alta Prioridad</label>
+    <!-- Boton -->
+    <button 
+      class="btn btn-primary">
+      Salvar Articulo
+    </button>
+  </form>
+  <!-- Lista -->
   <ul>
     <li v-for="item in items" :key="item.id"> 🛍️ {{ item.label }} </li>
   </ul>
