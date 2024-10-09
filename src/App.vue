@@ -69,13 +69,22 @@
       Salvar Articulo
     </button>
   </form>
-  <!-- Lista -->
+  <!-- Lista clases como objetos -->
   <ul>
     <li 
       v-for="{label, id, purchased, priority} in items" 
       :key="id"
       :class="{ strikeout: purchased, priority: priority}"
       class="amazing"> 
+      {{priority ? "🔥": "🛍️"}} {{ label }}
+    </li>
+  </ul>
+  <!-- Lista clases como arreglos -->
+  <ul>
+    <li 
+      v-for="{label, id, purchased, priority} in items" 
+      :key="id"
+      :class="[purchased ? 'strikeout': '', priority ? 'priority' : '']"> 
       {{priority ? "🔥": "🛍️"}} {{ label }}
     </li>
   </ul>
