@@ -5,10 +5,10 @@
   // --- items ---
   // Item-Model
   const items = ref([
-    {id:'0', label: '10 bolillos'},
-    {id:'1', label:'1 lata frijoles'},
-    {id:'2', label:'1 Chelas'},
-    {id:'3', label:'1 Nutella'},
+    {id:'0', label: '10 bolillos', purchased: false, priority: true},
+    {id:'1', label:'1 lata frijoles', purchased: true, priority: true},
+    {id:'2', label:'1 Chelas', purchased: false, priority: false},
+    {id:'3', label:'1 Nutella', purchased: true, priority: true},
   ]);
   // Item-Method
   const saveItem = () => {
@@ -71,7 +71,13 @@
   </form>
   <!-- Lista -->
   <ul>
-    <li v-for="item in items" :key="item.id"> 🛍️ {{ item.label }} </li>
+    <li 
+      v-for="{label, id, purchased, priority} in items" 
+      :key="id"
+      :class="{ strikeout: purchased, priority: priority}"
+      class="amazing"> 
+      {{priority ? "🔥": "🛍️"}} {{ label }}
+    </li>
   </ul>
   <p v-if="items.length === 0">🥀 NO HAY ELEMENTOS EN TU LISTA 🥀</p>
 </template>
