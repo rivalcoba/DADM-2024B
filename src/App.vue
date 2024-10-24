@@ -74,7 +74,7 @@
     <li 
       v-for="{label, id, purchased, priority} in items" 
       :key="id"
-      :class="{ strikeout: purchased, priority: priority}"
+      :class="{ strikeout: purchased, priority}"
       class="amazing"> 
       {{priority ? "🔥": "🛍️"}} {{ label }}
     </li>
