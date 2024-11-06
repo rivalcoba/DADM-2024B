@@ -1,11 +1,15 @@
 <template>
   <div class="plan">
     <div class="description">
-      <span class="title"> El adicto </span>
+      <span class="title"> {{ planIcon }} {{ name }} </span>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+// Usando un macro para
+// definir las props
+defineProps(['name','planIcon']);
+</script>
 
 <style scoped></style>
