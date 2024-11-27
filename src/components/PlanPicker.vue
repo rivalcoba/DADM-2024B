@@ -1,6 +1,6 @@
 <script setup>
 import PlanPickerItem from './PlanPickerItem.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 // Creando una referencia reactiva
 // para almecenar el plan seleccionado
 const selectedPlan = ref(null)
@@ -20,6 +20,11 @@ console.log("Termina de ejecutar el script setup 🥳");
 onMounted(() => {
   console.log("El componente PlanPicker se ha montado 🎉");
   console.log(plansWrapper.value);
+});
+
+// registrando el hook unmounted
+onUnmounted(() => {
+  console.log("El componente PlanPicker se ha desmontado 😢");
 });
 </script>
 
